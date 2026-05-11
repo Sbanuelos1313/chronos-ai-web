@@ -154,7 +154,7 @@ body.light-mode .cc-desc{color:rgba(26,10,60,0.6)}
   </a>
   <ul class="nav-links"><li><a href="/products/">Products</a></li><li><a href="/about/">About</a></li><li><a href="/patents/">IP Portfolio</a></li><li><a href="mailto:info@samint.com?subject=Demo Request" class="nav-cta">Book a Demo</a></li></ul>
   <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark"><span id="themeIcon">🌙</span></button>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="openDrawer()"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   <div class="mobile-drawer" id="mobileDrawer">
     <button class="drawer-close" onclick="closeDrawer()">&#xd7;</button>
     <a href="/products/" onclick="closeDrawer()">Products</a>
@@ -257,6 +257,7 @@ const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isInters
 document.querySelectorAll('.fade-up').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.08)+'s';obs.observe(el);});
 (function(){const s=localStorage.getItem('chronos-theme');if(s==='light'){document.body.classList.add('light-mode');const i=document.getElementById('themeIcon');if(i)i.textContent='\u{1F319}';}})();
 function toggleTheme(){const l=document.body.classList.toggle('light-mode');const i=document.getElementById('themeIcon');if(i)i.textContent=l?'\u{1F319}':'\u2600\uFE0F';localStorage.setItem('chronos-theme',l?'light':'dark');}
+document.addEventListener("DOMContentLoaded",function(){var btn=document.getElementById("hamburger");if(btn){btn.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();openDrawer();});btn.addEventListener("touchend",function(e){e.preventDefault();e.stopPropagation();openDrawer();});}});
 function openDrawer(){
   var d = document.getElementById('mobileDrawer');
   if(d){ d.style.display='flex'; setTimeout(function(){ d.classList.add('open'); }, 10); }
