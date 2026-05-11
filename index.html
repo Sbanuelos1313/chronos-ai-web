@@ -21,7 +21,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 @keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,80px)}}
 @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,60px)}}
 @keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-60px)}}
-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(8,6,18,0.7);backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);transition:background 0.3s}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:9998;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(8,6,18,0.7);backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);transition:background 0.3s}
 nav.scrolled{background:rgba(8,6,18,0.95)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
@@ -31,7 +31,7 @@ nav.scrolled{background:rgba(8,6,18,0.95)}
 .nav-cta:hover{background:#6D28D9!important;transform:translateY(-1px)}
 .theme-toggle{background:none;border:1px solid rgba(255,255,255,0.15);border-radius:8px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:15px;transition:all 0.2s;flex-shrink:0}
 .theme-toggle:hover{background:rgba(255,255,255,0.08)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:10000}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:9999;position:relative;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .hamburger span{display:block;width:26px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px}
 
 .mobile-drawer {
@@ -257,8 +257,14 @@ const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isInters
 document.querySelectorAll('.fade-up').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.08)+'s';obs.observe(el);});
 (function(){const s=localStorage.getItem('chronos-theme');if(s==='light'){document.body.classList.add('light-mode');const i=document.getElementById('themeIcon');if(i)i.textContent='\u{1F319}';}})();
 function toggleTheme(){const l=document.body.classList.toggle('light-mode');const i=document.getElementById('themeIcon');if(i)i.textContent=l?'\u{1F319}':'\u2600\uFE0F';localStorage.setItem('chronos-theme',l?'light':'dark');}
-function openDrawer(){document.getElementById('mobileDrawer').classList.add('open');}
-function closeDrawer(){document.getElementById('mobileDrawer').classList.remove('open');}
+function openDrawer(){
+  var d = document.getElementById('mobileDrawer');
+  if(d){ d.style.display='flex'; setTimeout(function(){ d.classList.add('open'); }, 10); }
+}
+function closeDrawer(){
+  var d = document.getElementById('mobileDrawer');
+  if(d){ d.classList.remove('open'); setTimeout(function(){ d.style.display='none'; }, 350); }
+}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
 </script>
 
