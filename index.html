@@ -34,24 +34,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--tex
 
 
 
-.mobile-drawer {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(8,6,18,0.99);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 8px;
-  transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-  overflow: hidden;
-}
+
 
 
 
@@ -143,13 +126,34 @@ body.light-mode .cc-desc{color:rgba(26,10,60,0.6)}
 }
 
 
+
+
+
+
+.nav-links a:hover,.nav-links a.active{color:white}
+
+
+
+
+
+
+
+
+
+@media(max-width:768px){
+  
+  
+  
+}
+
+
 #mainNav{position:fixed;top:0;left:0;right:0;height:64px;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(8,6,18,0.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.08)}
 .nav-logo{display:flex;align-items:center;text-decoration:none;gap:8px}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
 .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none}
 .nav-links a:hover,.nav-links a.active{color:white}
 .nav-cta{background:#7C3AED!important;color:white!important;padding:9px 20px;border-radius:7px;font-weight:600!important}
-.theme-toggle{background:none;border:1px solid rgba(255,255,255,0.15);border-radius:8px;width:34px;height:34px;cursor:pointer;color:rgba(255,255,255,0.6);font-size:15px;display:flex;align-items:center;justify-content:center}
+.theme-toggle{background:none;border:1px solid rgba(255,255,255,0.15);border-radius:8px;width:34px;height:34px;cursor:pointer;color:rgba(255,255,255,0.6);font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hamburger-wrap{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;z-index:1000}
 .hamburger-wrap span{display:block;width:24px;height:2px;background:white;border-radius:2px}
 .mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#080612;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:8px}
@@ -157,11 +161,7 @@ body.light-mode .cc-desc{color:rgba(26,10,60,0.6)}
 .mob-close{position:absolute;top:20px;right:20px;background:none;border:none;color:white;font-size:36px;cursor:pointer;line-height:1}
 .mob-link{font-family:Manrope,sans-serif;font-size:28px;font-weight:700;color:rgba(255,255,255,0.8);text-decoration:none;padding:12px 0}
 .mob-cta{margin-top:20px;background:#7C3AED;color:white;font-size:18px;font-weight:600;padding:14px 40px;border-radius:12px;text-decoration:none}
-@media(max-width:768px){
-  .nav-links{display:none!important}
-  .hamburger-wrap{display:flex!important}
-  #mainNav{padding:0 20px}
-}
+@media(max-width:768px){.nav-links{display:none!important}.hamburger-wrap{display:flex!important}#mainNav{padding:0 20px}}
 
 </style>
 </head>
@@ -170,17 +170,15 @@ body.light-mode .cc-desc{color:rgba(26,10,60,0.6)}
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 <nav id="mainNav">
-  <a href="https://chronos-ai.net" class="nav-logo" id="navLogo">
+  <a href="https://chronos-ai.net" class="nav-logo">
     <img src="/favicon.png" alt="Chronos AI" style="height:36px;width:auto;display:inline-block;vertical-align:middle;margin-right:8px">
     <span style="font-family:Manrope,sans-serif;font-weight:700;font-size:16px;color:white;vertical-align:middle">Chronos ai</span>
   </a>
-  <ul class="nav-links" id="navLinks"><li><a href="/products/">Products</a></li><li><a href="/about/">About</a></li><li><a href="/patents/">IP Portfolio</a></li>
+  <ul class="nav-links"><li><a href="/products/">Products</a></li><li><a href="/about/">About</a></li><li><a href="/patents/">IP Portfolio</a></li>
     <li><a href="mailto:info@samint.com?subject=Demo Request" class="nav-cta">Book a Demo</a></li>
   </ul>
   <button class="theme-toggle" id="themeToggle" title="Toggle theme"><span id="themeIcon">☀️</span></button>
-  <div class="hamburger-wrap" id="hamburgerWrap">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger-wrap" id="hamburgerWrap"><span></span><span></span><span></span></div>
 </nav>
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" id="mobClose">&#xd7;</button>
@@ -276,20 +274,7 @@ if(canvas){
   </div>
 </footer>
 
-<script>
-const nav=document.getElementById('nav');
-if(nav)window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.08)+'s';obs.observe(el);});
-(function(){const s=localStorage.getItem('chronos-theme');if(s==='light'){document.body.classList.add('light-mode');const i=document.getElementById('themeIcon');if(i)i.textContent='\u{1F319}';}})();
-':'\u2600\uFE0F';localStorage.setItem('chronos-theme',l?'light':'dark');}
-btn.addEventListener("touchend",function(e){e.preventDefault();e.stopPropagation();openDrawer();});}});
-, 10); }
-}
-, 350); }
-}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
-</script>
+
 
 
 <script>
