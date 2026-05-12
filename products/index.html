@@ -385,5 +385,47 @@ function closeDrawer(){document.getElementById('mobileDrawer').classList.remove(
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
 </script>
 
+
+<!-- MOBILE MENU -->
+<style>
+#mob-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#06030f;z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+#mob-overlay.open{display:flex}
+#mob-overlay .mx{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:44px;cursor:pointer;line-height:1;padding:0}
+#mob-overlay a.ml{font-family:Manrope,sans-serif;font-size:32px;font-weight:700;color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 0}
+#mob-overlay a.mc{margin-top:16px;background:#7C3AED;color:white;font-size:18px;font-weight:600;padding:16px 48px;border-radius:12px;text-decoration:none}
+#mob-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px;position:fixed;top:14px;right:16px;z-index:10000}
+#mob-btn span{display:block;width:26px;height:2px;background:white;border-radius:2px;pointer-events:none}
+@media(max-width:768px){#mob-btn{display:flex}}
+</style>
+
+<button id="mob-btn" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div id="mob-overlay">
+  <button class="mx" id="mob-close">&#xd7;</button>
+  <a href="/products/" class="ml">Products</a>
+  <a href="/about/" class="ml">About</a>
+  <a href="/patents/" class="ml">IP Portfolio</a>
+  <a href="mailto:info@samint.com?subject=Demo Request" class="mc">Book a Demo</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('mob-btn');
+  var ov = document.getElementById('mob-overlay');
+  var cls = document.getElementById('mob-close');
+  function open(){if(ov)ov.classList.add('open');}
+  function close(){if(ov)ov.classList.remove('open');}
+  if(btn){btn.onclick = open;}
+  if(cls){cls.onclick = close;}
+  if(ov){
+    var links = ov.querySelectorAll('a');
+    for(var i=0;i<links.length;i++){links[i].onclick = close;}
+  }
+})();
+</script>
+<!-- END MOBILE MENU -->
+
 </body>
 </html>
