@@ -309,11 +309,7 @@ if(canvas){
 #mob-btn span{display:block;width:26px;height:2px;background:white;border-radius:2px;pointer-events:none}
 @media(max-width:768px){#mob-btn{display:flex}}
 </style>
-
-<button id="mob-btn" aria-label="Open menu">
-  <span></span><span></span><span></span>
-</button>
-
+<button id="mob-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
 <div id="mob-overlay">
   <button class="mx" id="mob-close">&#xd7;</button>
   <a href="/products/" class="ml">Products</a>
@@ -321,23 +317,18 @@ if(canvas){
   <a href="/patents/" class="ml">IP Portfolio</a>
   <a href="mailto:info@samint.com?subject=Demo Request" class="mc">Book a Demo</a>
 </div>
-
 <script>
 (function(){
-  var btn = document.getElementById('mob-btn');
-  var ov = document.getElementById('mob-overlay');
-  var cls = document.getElementById('mob-close');
+  var btn=document.getElementById('mob-btn');
+  var ov=document.getElementById('mob-overlay');
+  var cls=document.getElementById('mob-close');
   function open(){if(ov)ov.classList.add('open');}
   function close(){if(ov)ov.classList.remove('open');}
-  if(btn){btn.onclick = open;}
-  if(cls){cls.onclick = close;}
-  if(ov){
-    var links = ov.querySelectorAll('a');
-    for(var i=0;i<links.length;i++){links[i].onclick = close;}
-  }
+  if(btn){btn.onclick=open;}
+  if(cls){cls.onclick=close;}
+  if(ov){var ls=ov.querySelectorAll('a');for(var i=0;i<ls.length;i++){ls[i].onclick=close;}}
 })();
 </script>
 <!-- END MOBILE MENU -->
-
 </body>
 </html>
