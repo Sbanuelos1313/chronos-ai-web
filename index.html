@@ -179,62 +179,124 @@ body.light-mode .cc-desc{color:rgba(26,10,60,0.6)}
 .mlink{font-family:Manrope,sans-serif;font-size:32px;font-weight:700;color:rgba(255,255,255,0.85);text-decoration:none;padding:10px 0}
 .mcta{margin-top:16px;background:#7C3AED;color:white;font-size:18px;font-weight:600;padding:16px 48px;border-radius:12px;text-decoration:none}
 @media(max-width:768px){.nav-links{display:none!important}.hbg{display:flex!important}#mainNav{padding:0 20px}}
+/* Home page refinements */
+.nav-tools{display:flex;align-items:center;gap:12px}
+.theme-toggle{background:rgba(255,255,255,.06);border:1px solid var(--glass-border);border-radius:9px;color:var(--text-primary);padding:9px 13px;cursor:pointer;font:600 12px 'Space Grotesk',sans-serif}
+.theme-toggle:hover{border-color:var(--purple-light)}
+.mobile-nav{display:none}
+.home-section,.home-feature{max-width:1400px;margin:auto;padding:88px 6%;position:relative;z-index:1}
+.section-intro{max-width:760px;margin-bottom:34px}
+.section-intro>p:last-child,.home-feature>div>p:not(.section-label){font-size:16px;line-height:1.75;color:var(--text-secondary);max-width:650px}
+.section-accent{color:var(--purple-light)}
+.home-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.home-card{border:1px solid var(--glass-border);background:var(--glass);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:17px}
+.home-icon{color:var(--purple-light);font-weight:700;font-size:13px;letter-spacing:.12em}
+.home-card h3{font:800 22px Manrope,sans-serif;color:var(--text-primary)}
+.home-card p{font-size:14px;line-height:1.75;color:var(--text-secondary);flex:1}
+.home-card a,.feature-list a{color:var(--purple-light);text-decoration:none;font-weight:700;font-size:13px}
+.home-card a:hover,.feature-list a:hover{text-decoration:underline}
+.home-feature{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center;padding-top:60px;padding-bottom:90px}
+.home-feature .btn-glow{margin-top:26px}
+.feature-list{border:1px solid var(--glass-border);border-radius:18px;overflow:hidden;background:var(--glass)}
+.feature-list a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:23px 25px;border-bottom:1px solid var(--glass-border);text-decoration:none}
+.feature-list a:last-child{border-bottom:0}
+.feature-list strong{font:800 16px Manrope,sans-serif;color:var(--text-primary)}
+.feature-list span{font-weight:400;font-size:12px;color:var(--text-secondary);text-align:right}
+body.light-mode .nav-logo-txt,body.light-mode .nav-links a:not(.nav-cta){color:#281B4B}
+body.light-mode .nav-links a:hover{color:#7140D9}
+body.light-mode .theme-toggle{background:white;color:#281B4B}
+body.light-mode .btn-ghost{color:#281B4B;background:white;border-color:rgba(40,27,75,.2)}
+body.light-mode .hero-badge,body.light-mode .section-label,body.light-mode .section-accent,body.light-mode .home-icon,body.light-mode .home-card a{color:#7140D9}
+body.light-mode .hero-sub{color:#51436A}
+body.light-mode .chip{background:rgba(255,255,255,.96);color:#281B4B;border-color:rgba(40,27,75,.16);box-shadow:0 8px 24px rgba(40,27,75,.12)}
+body.light-mode .visual-glass{background:rgba(113,64,217,.04);border-color:rgba(40,27,75,.13)}
+body.light-mode .home-card,body.light-mode .feature-list{background:#fff}
+body.light-mode .cc-link,body.light-mode .feature-list a{color:#7140D9}
+body.light-mode .footer-links a,body.light-mode .footer-text{color:#51436A}
+body.light-mode .hbg span{background:#281B4B}
+body.light-mode .orb{opacity:.17}
+@media(max-width:768px){
+ .home-section,.home-feature{padding:58px 20px}
+ .home-grid,.home-feature{grid-template-columns:1fr;gap:14px}
+ .home-feature{gap:28px}
+ .home-card{padding:26px}
+ .nav-tools{gap:4px}
+ .theme-toggle span{display:none}
+ .mobile-nav{display:none;position:fixed;inset:0;background:#080612;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+ .mobile-nav.open{display:flex}
+ .mobile-nav a{font:700 25px Manrope,sans-serif;color:#fff;text-decoration:none}
+ .mobile-nav .mobile-contact{background:#7C3AED;border-radius:10px;padding:12px 24px}
+ .mobile-close{position:absolute;right:24px;top:18px;font-size:38px;background:none;border:0;color:#fff;cursor:pointer}
+ body.light-mode .mobile-nav{background:#F8F7FC}
+ body.light-mode .mobile-nav a:not(.mobile-contact),body.light-mode .mobile-close{color:#281B4B}
+ .hbg{position:relative;z-index:900}
+ .hero{min-height:auto}
+}
+@media(min-width:769px){.mobile-nav{display:none!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
-<nav id="mainNav"><a href="/" class="nav-logo"><img src="/favicon.png" alt="Chronos AI" style="height:38px;width:auto"><span class="nav-logo-txt">Chronos ai</span></a><ul class="nav-links"><li><a href="/products/">Products</a></li><li><a href="/about/">About</a></li><li><a href="/patents/">IP Portfolio</a></li><li><a href="mailto:info@samint.com?subject=Demo Request" class="nav-cta">Book a Demo</a></li></ul><button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<nav id="mainNav"><a href="/" class="nav-logo"><img src="/favicon.png" alt="Chronos AI" style="height:38px;width:auto"><span class="nav-logo-txt">Chronos ai</span></a><ul class="nav-links"><li><a href="/products/">Products</a></li><li><a href="/services/">Services</a></li><li><a href="/about/">About</a></li><li><a href="/patents/">IP Portfolio</a></li><li><a href="/contact/" class="nav-cta">Let's Talk</a></li></ul><div class="nav-tools"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">☀ <span>Light</span></button><button class="hbg" id="hbg" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button></div></nav>
+<div id="mobileNav" class="mobile-nav" aria-hidden="true"><button id="mobileClose" type="button" class="mobile-close" aria-label="Close navigation">×</button><a href="/products/">Products</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/patents/">IP Portfolio</a><a href="/contact/" class="mobile-contact">Let's Talk</a></div>
 
 
 <div style="display:flex;justify-content:center;width:100%;position:relative;z-index:1;background:var(--bg)"><section class="hero" style="z-index:1">
   <div style="position:relative;z-index:2;padding-left:2%">
-    <div class="hero-badge">SamInterest LLC d/b/a Chronos AI &nbsp;&middot;&nbsp; Edmond, Oklahoma</div>
+    <div class="hero-badge">S.A.M. Interests LLC d/b/a Chronos AI &nbsp;&middot;&nbsp; Edmond, Oklahoma</div>
     <h1>Engineering the<br>future of <span class="grad">human<br>performance.</span></h1>
     <p class="hero-sub">AI that works for people, not the other way around</p>
-    <p class="hero-desc">We build AI-powered platforms that solve real operational and human challenges &mdash; from workforce intelligence to enterprise process automation to personal wellness.</p>
+    <p class="hero-desc">We build AI-powered products and intelligent systems that solve real operational and human challenges &mdash; from workforce intelligence and business automation to consumer technology and personal wellness.</p>
     <div class="hero-actions">
       <a href="/products/" class="btn-glow">Explore products <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="mailto:info@samint.com?subject=Demo Request" class="btn-ghost">Book a demo</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="hstat-num">6<span>+</span></div><div class="hstat-label">AI Products</div></div>
-      <div><div class="hstat-num">5<span>+</span></div><div class="hstat-label">Patents Filed</div></div>
-      <div><div class="hstat-num">5</div><div class="hstat-label">States</div></div>
-      <div><div class="hstat-num">1<span>TM</span></div><div class="hstat-label">Trademark</div></div>
+      <a href="/services/" class="btn-ghost">AI &amp; Automation Services</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-visual">
       <div class="visual-glass"><canvas id="neural"></canvas></div>
-      <a href="products.html#hypercruit" class="chip chip-1"><span class="chip-dot" style="background:#A78BFA"></span>Hypercruit &middot; Live Pilot</a>
-      <a href="products.html#dia" class="chip chip-2"><span class="chip-dot" style="background:#34D399"></span>D.I.A. &middot; Live</a>
-      <a href="products.html#pausewell" class="chip chip-3"><span class="chip-dot" style="background:#F472B6"></span>PauseWell &middot; App Store</a>
-      <a href="products.html#prism" class="chip chip-4"><span class="chip-dot" style="background:#06B6D4"></span>PRISM &middot; Coming 2026</a>
+      <a href="/products/#hypercruit" class="chip chip-1"><span class="chip-dot" style="background:#A78BFA"></span>Hypercruit &middot; Workforce Intelligence</a>
+      <a href="/products/#dia" class="chip chip-2"><span class="chip-dot" style="background:#34D399"></span>D.I.A. &middot; Veteran Support</a>
+      <a href="/products/#pausewell" class="chip chip-3"><span class="chip-dot" style="background:#F472B6"></span>PauseWell &middot; Wellness</a>
+      <a href="/products/#prism" class="chip chip-4"><span class="chip-dot" style="background:#06B6D4"></span>PRISM &middot; Enterprise Platform</a>
     </div>
   </div>
 </section></div>
 
+<section class="home-section" id="solutions">
+  <div class="section-intro"><p class="section-label">What we do</p><h2>Intelligent technology.<br><span class="section-accent">Built around real work.</span></h2><p>From business-critical operations to tools that support people every day, Chronos AI designs technology to make complex work simpler.</p></div>
+  <div class="home-grid">
+    <article class="home-card"><div class="home-icon">01 /</div><h3>Enterprise Systems</h3><p>Connected workflows, accessible information, and purpose-built platforms that bring teams and operations together.</p><a href="/services/">Explore services →</a></article>
+    <article class="home-card"><div class="home-icon">02 /</div><h3>AI Implementation</h3><p>Practical AI integration, process automation, and decision support designed for the way your organization actually works.</p><a href="/services/">How we work →</a></article>
+    <article class="home-card"><div class="home-icon">03 /</div><h3>Products With Purpose</h3><p>Original platforms spanning workforce intelligence, enterprise operations, veteran support, wellness, and more.</p><a href="/products/">Explore products →</a></article>
+  </div>
+</section>
+<section class="home-feature" aria-labelledby="feature-title">
+ <div><p class="section-label">Our platforms</p><h2 id="feature-title">Solutions across industries.<br>One human-centered approach.</h2><p>Discover the systems we're developing and the problems they're designed to solve.</p><a class="btn-glow" href="/products/">View the product portfolio →</a></div>
+ <div class="feature-list"><a href="/products/#prism"><strong>PRISM</strong><span>Enterprise operational intelligence ↗</span></a><a href="/products/#hypercruit"><strong>Hypercruit</strong><span>Workforce and skills matching ↗</span></a><a href="/products/#dia"><strong>D.I.A.</strong><span>Veteran claims support ↗</span></a><a href="/products/#pausewell"><strong>PauseWell</strong><span>Menopause and wellness ↗</span></a></div>
+</section>
 <section class="contact-section" id="contact">
   <p class="section-label">Get In Touch</p>
   <h2>Ready to build<br>something that matters?</h2>
-  <p style="font-size:17px;color:var(--text-secondary);max-width:520px;margin:0 auto">Whether you&rsquo;re a state agency, enterprise, or mission-driven organization &mdash; let&rsquo;s talk.</p>
+  <p style="font-size:17px;color:var(--text-secondary);max-width:520px;margin:0 auto">Whether you need a product walkthrough, an AI automation strategy, or a system built around your operation &mdash; let&rsquo;s talk.</p>
   <div class="contact-grid">
-    <a href="mailto:info@samint.com?subject=Demo Request" class="contact-card">
+    <a href="/contact/#project" class="contact-card">
       <div class="cc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m22 3-10 9L2 3"/></svg></div>
-      <p class="cc-title">Book a Demo</p><p class="cc-desc">Schedule a walkthrough of any Chronos AI product.</p>
-      <span class="cc-link">Get started &rarr;</span>
+      <p class="cc-title">Discuss a Project</p><p class="cc-desc">Tell us what is slowing your team down or what you want to build.</p>
+      <span class="cc-link">Start a conversation &rarr;</span>
     </a>
-    <a href="mailto:info@samint.com?subject=Partnership Inquiry" class="contact-card">
+    <a href="/contact/#demo" class="contact-card">
       <div class="cc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <p class="cc-title">Partner With Us</p><p class="cc-desc">State agencies, enterprises, and tribal organizations welcome.</p>
-      <span class="cc-link">Inquire &rarr;</span>
+      <p class="cc-title">Request a Product Demo</p><p class="cc-desc">See Hypercruit, PRISM, or another Chronos AI platform in action.</p>
+      <span class="cc-link">Request a demo &rarr;</span>
     </a>
-    <a href="mailto:info@samint.com?subject=PRISM Waitlist" class="contact-card">
+    <a href="/contact/#partner" class="contact-card">
       <div class="cc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-      <p class="cc-title">PRISM Waitlist</p><p class="cc-desc">Be first to access our enterprise operations platform.</p>
-      <span class="cc-link">Join waitlist &rarr;</span>
+      <p class="cc-title">Partnership Inquiry</p><p class="cc-desc">Explore enterprise, public-sector, education, or strategic partnerships.</p>
+      <span class="cc-link">Explore partnership &rarr;</span>
     </a>
   </div>
 </section>
@@ -265,12 +327,13 @@ if(canvas){
 </script>
 
 <footer>
-  <span class="footer-text">&copy; 2026 SamInterest LLC d/b/a Chronos AI &middot; Edmond, Oklahoma</span>
+  <span class="footer-text">&copy; 2026 S.A.M. Interests LLC d/b/a Chronos AI &middot; Edmond, Oklahoma</span>
   <div class="footer-links">
     <a href="/products/">Products</a>
+    <a href="/services/">Services</a>
     <a href="/about/">About</a>
     <a href="/patents/">IP Portfolio</a>
-    <a href="mailto:info@samint.com">Contact</a>
+    <a href="mailto:info@saminterests.com">Contact</a>
   </div>
 </footer>
 
@@ -279,56 +342,23 @@ if(canvas){
 
 
 
+
+
 <script>
 (function(){
-  var b=document.getElementById('hbg');
-  var m=document.getElementById('mmenu');
-  var c=document.getElementById('mclose');
-  function open_m(){if(m)m.classList.add('open');}
-  function close_m(){if(m)m.classList.remove('open');}
-  if(b){b.onclick=open_m;}
-  if(c){c.onclick=close_m;}
-  if(m){
-    var ls=m.querySelectorAll('a');
-    for(var i=0;i<ls.length;i++){ls[i].onclick=close_m;}
-  }
-  window.addEventListener('scroll',function(){
-    var n=document.getElementById('mainNav');
-    if(n)n.style.background=window.scrollY>20?'rgba(8,6,18,0.98)':'rgba(8,6,18,0.88)';
-  });
+ const themeBtn=document.getElementById('theme-toggle');
+ const nav=document.getElementById('mobileNav');
+ const openBtn=document.getElementById('hbg');
+ const closeBtn=document.getElementById('mobileClose');
+ function applyTheme(light){document.body.classList.toggle('light-mode',light);themeBtn.innerHTML=light?'☾ <span>Dark</span>':'☀ <span>Light</span>';themeBtn.setAttribute('aria-pressed',String(light));themeBtn.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');try{localStorage.setItem('chronos-theme',light?'light':'dark')}catch(e){}}
+ let saved='dark';try{saved=localStorage.getItem('chronos-theme')||'dark'}catch(e){}
+ applyTheme(saved==='light');
+ themeBtn.addEventListener('click',()=>applyTheme(!document.body.classList.contains('light-mode')));
+ function setMenu(open){nav.classList.toggle('open',open);nav.setAttribute('aria-hidden',String(!open));openBtn.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':''}
+ openBtn.addEventListener('click',()=>setMenu(true));closeBtn.addEventListener('click',()=>setMenu(false));
+ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 })();
 </script>
-<!-- MOBILE MENU -->
-<style>
-#mob-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#06030f;z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:20px}
-#mob-overlay.open{display:flex}
-#mob-overlay .mx{position:absolute;top:24px;right:24px;background:none;border:none;color:white;font-size:44px;cursor:pointer;line-height:1;padding:0}
-#mob-overlay a.ml{font-family:Manrope,sans-serif;font-size:32px;font-weight:700;color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 0}
-#mob-overlay a.mc{margin-top:16px;background:#7C3AED;color:white;font-size:18px;font-weight:600;padding:16px 48px;border-radius:12px;text-decoration:none}
-#mob-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px;position:fixed;top:14px;right:16px;z-index:10000}
-#mob-btn span{display:block;width:26px;height:2px;background:white;border-radius:2px;pointer-events:none}
-@media(max-width:768px){#mob-btn{display:flex}}
-</style>
-<button id="mob-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
-<div id="mob-overlay">
-  <button class="mx" id="mob-close">&#xd7;</button>
-  <a href="/products/" class="ml">Products</a>
-  <a href="/about/" class="ml">About</a>
-  <a href="/patents/" class="ml">IP Portfolio</a>
-  <a href="mailto:info@samint.com?subject=Demo Request" class="mc">Book a Demo</a>
-</div>
-<script>
-(function(){
-  var btn=document.getElementById('mob-btn');
-  var ov=document.getElementById('mob-overlay');
-  var cls=document.getElementById('mob-close');
-  function open(){if(ov)ov.classList.add('open');}
-  function close(){if(ov)ov.classList.remove('open');}
-  if(btn){btn.onclick=open;}
-  if(cls){cls.onclick=close;}
-  if(ov){var ls=ov.querySelectorAll('a');for(var i=0;i<ls.length;i++){ls[i].onclick=close;}}
-})();
-</script>
-<!-- END MOBILE MENU -->
 </body>
 </html>
